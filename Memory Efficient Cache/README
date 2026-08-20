@@ -1,0 +1,83 @@
+# Memory Efficient Cache
+
+## Problem Statement
+
+Design and implement a cache that stores values efficiently in memory while supporting fast lookups and bounded capacity. The cache must avoid unnecessary memory overhead and should be suitable for scenarios where many small entries are stored, and memory usage matters.
+
+This challenge focuses on building a compact, efficient cache with practical constraints similar to those used in production systems.
+
+## Goals
+
+- Store key-value pairs with low memory overhead
+- Support lookup by key in O(1) average time
+- Enforce a maximum number of entries
+- Evict old or least-recently-used entries when full
+- Keep the implementation simple and predictable
+
+## Functional Requirements
+
+1. Insert a key-value pair
+2. Retrieve a value by key
+3. Update an existing value
+4. Remove a specific key
+5. Track cache capacity
+6. Evict entries when capacity is exceeded
+7. Handle duplicate keys correctly
+
+## Constraints
+
+- Memory usage should be minimized where possible
+- Prefer efficient data structures over naive dictionary-plus-list duplication
+- Avoid storing redundant metadata unless necessary
+- The solution should be scalable for large numbers of entries
+
+## Suggested Design Considerations
+
+A typical solution for this task is a hash map backed by a compact eviction structure. Common approaches include:
+
+- Hash table for O(1) average lookup
+- Linked list or an indexed structure for eviction order
+- Entry metadata stored compactly
+- Capacity-based eviction policy such as LRU or FIFO
+
+You may choose any policy as long as it is implemented consistently and documented clearly.
+
+## Example API
+
+```python
+cache = MemoryEfficientCache(capacity=1000)
+
+cache.put("user:1", {"name": "Ayesha"})
+value = cache.get("user:1")
+cache.remove("user:1")
+```
+
+## Expected Behavior
+
+- `put(key, value)` inserts or updates an existing entry
+- `get(key)` returns the stored value or `None`/a sentinel if key is missing
+- When the cache exceeds capacity, it evicts a key according to the chosen policy
+- Repeated updates should not create stale references or duplicate entries
+
+## Validation Ideas
+
+- Verify retrieval of newly inserted values
+- Verify updates overwrite previous values
+- Verify eviction removes the least-relevant item when capacity is reached
+- Verify memory usage remains bounded for many insertions
+- Verify repeated insert/update/remove operations do not corrupt state
+
+## Evaluation Criteria
+
+A strong implementation generally demonstrates:
+
+- Correctness under inserts, updates, and removals
+- Stable performance for large data sets
+- Reasonable memory efficiency
+- Clear, maintainable code
+
+## Notes
+
+This is a design-and-implementation task rather than a pure algorithmic puzzle. The key challenge is balancing speed, correctness, and memory usage.
+
+Focus on practical trade-offs: a solution that is correct and memory-aware is often preferable to a theoretically optimal but overly complex implementation.
