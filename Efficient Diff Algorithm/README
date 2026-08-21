@@ -1,0 +1,24 @@
+# Efficient Diff Algorithm
+
+## Overview
+This project implements an efficient diff algorithm for comparing two sequences of data and identifying differences.
+
+## Features
+- Fast comparison of text or data sequences
+- Generates detailed diff output showing additions, deletions, and modifications
+- Optimized for performance on large datasets
+- Clean and intuitive API
+
+## Usage
+```
+// Example usage
+diff(sequence1, sequence2)
+```
+
+## Algorithm
+The implementation uses optimized techniques to efficiently identify the minimal set of changes needed to transform one sequence into another.
+
+## Performance
+- Time Complexity: O(n*m) worst case, optimized for common cases
+- Space Complexity: O(n+m)
+
