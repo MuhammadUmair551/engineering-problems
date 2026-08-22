@@ -1,0 +1,53 @@
+# Circular Buffer
+
+## Overview
+A circular buffer (also known as a ring buffer or cyclic buffer) is a fixed-size buffer that overwrites old data once it reaches capacity. It's commonly used in producer-consumer scenarios, audio processing, and streaming data applications.
+
+## Features
+- **Fixed size**: Predefined capacity that doesn't grow
+- **Efficient memory usage**: Reuses allocated memory without deallocation
+- **O(1) operations**: Constant time for enqueue and dequeue operations
+- **Thread-safe potential**: Can be implemented with locks for concurrent access
+- **Wraparound handling**: Automatically wraps pointers when reaching buffer end
+
+## How It Works
+The circular buffer uses two pointers or indices:
+- **Head/Write pointer**: Points to the next position to write
+- **Tail/Read pointer**: Points to the oldest unread data
+
+When the write pointer reaches the end, it wraps around to the beginning, overwriting old data if necessary.
+
+## Common Operations
+- **Enqueue/Write**: Add data to the buffer
+- **Dequeue/Read**: Remove and retrieve data from the buffer
+- **Peek**: View data without removing it
+- **Is Empty**: Check if buffer contains no data
+- **Is Full**: Check if buffer has reached capacity
+- **Size**: Get number of elements currently in buffer
+
+## Use Cases
+- Audio/video streaming buffers
+- Network packet queues
+- Event logging systems
+- Real-time data processing
+- FIFO queue implementations
+- Print job queues
+
+## Example Usage
+```
+buffer = CircularBuffer(size=5)
+buffer.enqueue(1)
+buffer.enqueue(2)
+buffer.enqueue(3)
+value = buffer.dequeue()  // Returns 1
+```
+
+## Time Complexity
+- Enqueue: O(1)
+- Dequeue: O(1)
+- Peek: O(1)
+- Is Empty: O(1)
+- Is Full: O(1)
+
+## Space Complexity
+O(n) where n is the capacity of the buffer
