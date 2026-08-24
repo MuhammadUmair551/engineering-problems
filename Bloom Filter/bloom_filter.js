@@ -59,7 +59,6 @@ class BloomFilter {
 
     for (const idx of indexes) {
       if (this.bitArray[idx] === 0) {
-        // Koi bhi ek bit 0 hai — DEFINITELY nahi hai
         return { result: false, certain: true, indexes };
       }
     }
